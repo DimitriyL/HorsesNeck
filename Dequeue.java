@@ -21,6 +21,7 @@ public class Dequeue<T> implements Deque<T>{
 	    return null;
 
 	T ret = _queue.remove(0);
+	_size -= 1;
 	return ret;
     }
 
@@ -33,5 +34,13 @@ public class Dequeue<T> implements Deque<T>{
 
     public int size(){
 	return _size;
+    }
+
+    public boolean offer(T x){
+	if (_size == _capacity)
+	    return false;
+	_queue.add(x);
+	_size += 1;
+	return true;
     }
 }
