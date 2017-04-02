@@ -41,6 +41,13 @@ public class Dequeue<T> implements Deque<T>{
 	return _queue.get(0);
     }
 
+    public T peekLast(){
+	if (isEmpty())
+	    return null;
+
+	return _queue.get(_size - 1);
+    }
+
     public int size(){
 	return _size;
     }
