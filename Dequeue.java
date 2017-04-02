@@ -39,6 +39,7 @@ public class Dequeue<T> implements Deque<T>{
 	//_front.getNext()
 	return size() == 0;
     }
+    //O(1)
 
     /*
       public T poll() and pollLast()
@@ -66,6 +67,7 @@ public class Dequeue<T> implements Deque<T>{
 	_size -= 1;
 	return ret;
     }
+    //O(1)
 
     public T pollLast(){
 	if (isEmpty())
@@ -78,6 +80,7 @@ public class Dequeue<T> implements Deque<T>{
 	_size -= 1;
 	return ret;
     }
+    //O(1)
 
     /*
       public T peek()/peekLast()
@@ -99,6 +102,7 @@ public class Dequeue<T> implements Deque<T>{
 	return _front.getCargo();
 	//uses _front as a "ghost node" to get the cargo
     }
+    //O(1)
 
     //same, but for the back
     public T peekLast(){
@@ -107,6 +111,7 @@ public class Dequeue<T> implements Deque<T>{
 
 	return _end.getCargo();
     }
+    //O(1)
 
     /*
       public int size()
@@ -118,6 +123,7 @@ public class Dequeue<T> implements Deque<T>{
     public int size(){
 	return _size;
     }
+    //O(1)
 
     /*
       public boolean offer(T x)/offerFirst(T x)
@@ -159,6 +165,7 @@ public class Dequeue<T> implements Deque<T>{
 	_size += 1;
 	return true;
     }
+    //O(1)
 
     public boolean offerFirst(T x){
 	//first two parts are identical to offer()
@@ -180,6 +187,7 @@ public class Dequeue<T> implements Deque<T>{
 	return true;
 	//process is complete
     }
+    //O(1)
 
     /*
       public boolean contains(Object x)
@@ -209,6 +217,7 @@ public class Dequeue<T> implements Deque<T>{
 	return false;
 	//element not found
     }
+    //O(n)
 
     /*
       public String toString()
@@ -235,6 +244,7 @@ public class Dequeue<T> implements Deque<T>{
 	}
 	return ret;
     }
+    //O(n)
 
     public static void main(String[] args){
 
