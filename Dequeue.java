@@ -23,4 +23,11 @@ public class Dequeue<T> implements Deque<T>{
 	T ret = _queue.remove(0);
 	return ret;
     }
+
+    public T peek(){
+	if (isEmpty())
+	    return null;
+
+	return _queue.get(0);
+    }
 }
