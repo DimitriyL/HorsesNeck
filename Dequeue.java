@@ -57,7 +57,9 @@ public class Dequeue<T> implements Deque<T>{
     public boolean offer(T x){
 	if (_size == _capacity)
 	    return false;
-	_queue.add(x);
+	DLLNode<T> newNode = new DLLNode<T> (x, _end, null);
+	_end.setNext(newNode);
+	_end = newNode;
 	_size += 1;
 	return true;
     }
@@ -65,14 +67,17 @@ public class Dequeue<T> implements Deque<T>{
     public boolean offerFirst(T x){
 	if (_size == _capacity)
 	    return false;
-	_queue.add(0,x);
+	DLLNode<T> newNode = new DLLNode<T> (x, null, _front);
+	_front.setPrev(newNode);
+	_front = newNode;
 	_size += 1;
 	return true;
     }
 
     public boolean contains(Object x){
-	for (T o:_queue){
-	    if (o.equals(x))
+	DLLNode<T> temp = _front;
+	while (temp.getNext() != null){
+	    if (temp.getCargo().equals(x))
 		return true;
 	}
 	return false;
@@ -80,8 +85,9 @@ public class Dequeue<T> implements Deque<T>{
 
     public String toString(){
 	String ret = "";
-	for (int x = 0; x < size(); x += 1)
-	    ret += _queue.get(x) + " ";
+	DLLNode<T> temp = _front;
+        while (temp.getNext() != null)
+	    ret += temp.getCargo() + " ";
 	return ret;
     }
 
