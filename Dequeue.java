@@ -1,13 +1,13 @@
-import java.util.ArrayList;
-
 public class Dequeue<T> implements Deque<T>{
 
-    private ArrayList<T> _queue;
+    private DLLNode<T> _front;
+    private DLLNode<T> _end;
     private int _size;
     private int _capacity;
 
     public Dequeue(int capacity){
-	_queue = new ArrayList<T>();
+        _front = null;
+	_end = null;
 	_size = 0;
 	_capacity = capacity;
     }
@@ -20,7 +20,8 @@ public class Dequeue<T> implements Deque<T>{
 	if (isEmpty())
 	    return null;
 
-	T ret = _queue.remove(0);
+        T ret = _front.getCargo();
+	_front = _front.getNext();
 	_size -= 1;
 	return ret;
     }
@@ -29,7 +30,8 @@ public class Dequeue<T> implements Deque<T>{
 	if (isEmpty())
 	    return null;
 
-	T ret = _queue.remove(_size - 1);
+	T ret = _end.getCargo();
+	_end = _end.getPrev();
 	_size -= 1;
 	return ret;
     }
@@ -38,14 +40,14 @@ public class Dequeue<T> implements Deque<T>{
 	if (isEmpty())
 	    return null;
 
-	return _queue.get(0);
+	return _front.getCargo();
     }
 
     public T peekLast(){
 	if (isEmpty())
 	    return null;
 
-	return _queue.get(_size - 1);
+	return _end.getCargo();
     }
 
     public int size(){
