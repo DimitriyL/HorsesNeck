@@ -25,6 +25,15 @@ public class Dequeue<T> implements Deque<T>{
 	return ret;
     }
 
+    public T pollLast(){
+	if (isEmpty())
+	    return null;
+
+	T ret = _queue.remove(_size - 1);
+	_size -= 1;
+	return ret;
+    }
+
     public T peek(){
 	if (isEmpty())
 	    return null;
