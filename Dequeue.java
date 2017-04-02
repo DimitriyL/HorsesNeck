@@ -60,6 +60,14 @@ public class Dequeue<T> implements Deque<T>{
 	return true;
     }
 
+    public boolean offerFirst(T x){
+	if (_size == _capacity)
+	    return false;
+	_queue.add(0,x);
+	_size += 1;
+	return true;
+    }
+
     public boolean contains(Object x){
 	for (T o:_queue){
 	    if (o.equals(x))
