@@ -1,3 +1,4 @@
+//used to implement Deque and Dequeue
 /*****************************************************
  * class DLLNode
  * Implements a node, for use in lists and other container classes.
