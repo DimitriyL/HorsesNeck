@@ -13,7 +13,7 @@ public class Dequeue<T> implements Deque<T>{
     }
 
     public boolean isEmpty(){
-	return _size == 0;
+	return size() == 0;
     }
 
     public T poll(){
@@ -29,5 +29,9 @@ public class Dequeue<T> implements Deque<T>{
 	    return null;
 
 	return _queue.get(0);
+    }
+
+    public int size(){
+	return _size;
     }
 }
