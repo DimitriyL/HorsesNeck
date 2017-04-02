@@ -43,4 +43,12 @@ public class Dequeue<T> implements Deque<T>{
 	_size += 1;
 	return true;
     }
+
+    public boolean contains(Object x){
+	for (T o:_queue){
+	    if (o.equals(x))
+		return true;
+	}
+	return false;
+    }
 }
