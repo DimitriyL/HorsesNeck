@@ -1,3 +1,8 @@
+//Team HorsesNeck {Dimitriy Leksanov, Michael Ruvinshteyn, Manahal Tabassum}
+//APCS2 pd 1
+//Lab 02 -- All Hands on Deque!
+//2017 - 4 - 2
+
 //implementation by Dequeue
 //uses elements relevant for now
 //poll(), peek(), and offer() were chosen to avoid exceptions

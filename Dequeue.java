@@ -1,3 +1,8 @@
+//Team HorsesNeck {Dimitriy Leksanov, Michael Ruvinshteyn, Manahal Tabassum}
+//APCS2 pd 1
+//Lab 02 -- All Hands on Deque!
+//2017 - 4 - 2
+
 //Dequeue is the implementation of Deque
 public class Dequeue<T> implements Deque<T>{
 
