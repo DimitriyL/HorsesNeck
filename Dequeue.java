@@ -3,6 +3,9 @@
 //Lab 02 -- All Hands on Deque!
 //2017 - 4 - 2
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 //Dequeue is the implementation of Deque
 public class Dequeue<T> implements Deque<T>{
 
@@ -17,8 +20,24 @@ public class Dequeue<T> implements Deque<T>{
     private int _capacity;
 
     /*
+      public Dequeue()
+      default constructor for class Dequeue<T>
+      preconds: attributes are not initialized
+      postconds: _front and _end set to null; _size set to 0
+                 _capacity set to 10 to indicate an empty Dequeue, with nice
+		 values
+     */
+    public Dequeue(){
+	_front = null;
+	_end = null;
+	_size = 0;
+	//default capacity value
+	_capacity = 10;
+    }
+
+    /*
       public Dequeue(int capacity)
-      constructor for class Dequeue<T>
+      overloaded constructor for class Dequeue<T>
       preconds: attributes _front, _end, _size, _capacity not set
       postconds: _front and _end set to null automatically; _size to 0
                  _capacity is set as indicated by the capacity attribute
@@ -250,6 +269,86 @@ public class Dequeue<T> implements Deque<T>{
 	return ret;
     }
     //O(n)
+
+    //return an Iterator over this list
+    public Iterator<T> iterator() 
+    { 
+	return new MyIterator();
+    }
+
+    /*****************************************************
+     * inner class MyIterator
+     * Adheres to specifications given by Iterator interface.
+     * Uses dummy node to facilitate iterability over LList.
+     *****************************************************/
+    private class MyIterator implements Iterator<T> 
+    {
+
+	private DLLNode<T> _dummy; // dummy node to tracking pos
+	private boolean _okToRemove; //flag indicates next() was called
+
+	//constructor 
+	public MyIterator() 
+	{
+	    //place dummy node in front of head
+	    _dummy = new DLLNode<T>( null, null, _front );
+	    //set oktorem flag
+	    _okToRemove = false;
+	}
+
+	//--------------v  Iterator interface methods  v-------------
+	//return true if iteration has more elements.
+	public boolean hasNext() 
+	{
+	    return _dummy.getNext() != null;
+	}
+
+
+	//return next element in this iteration
+	public T next() 
+	{
+	    _dummy = _dummy.getNext();
+	    if ( _dummy == null )
+		throw new NoSuchElementException();
+	    _okToRemove = true;
+	    return _dummy.getCargo();
+	}
+
+
+	//remove last element returned by this iterator (from last next() call)
+	public void remove() 
+	{
+	    if ( ! _okToRemove )
+		throw new IllegalStateException("must call next() beforehand");
+	    _okToRemove = false;
+
+	    //If removing only remaining node...
+	    //maintain invariant that _dummy always points to a node
+	    //   (...so that hasNext() will not crash)
+	    if ( _front == _end ) {
+		_front = _end = null;
+	    }
+	    //if removing first node...
+	    else if ( _front == _dummy ) {
+		_front = _front.getNext();
+		_front.setPrev( null ); //just to save mem
+	    }
+	    //if removing last node...
+	    else if ( _end == _dummy ) {
+		_end = _end.getPrev();
+		_end.setNext( null );
+	    }
+	    //if removing an interior node...
+	    else {
+		_dummy.getNext().setPrev( _dummy.getPrev() );
+		_dummy.getPrev().setNext( _dummy.getNext() );
+		//Q: How could the line below cause trouble?
+		//_dummy = _dummy.getPrev();
+	    }
+	    _size--; //decrement size attribute of outer class LList
+	}
+	//--------------^  Iterator interface methods  ^--------------
+    }//*************** end inner class MyIterator ***************
 
     public static void main(String[] args){
 
