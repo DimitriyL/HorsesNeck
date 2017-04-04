@@ -39,4 +39,8 @@ public interface Deque<T>{
     //of a particular element
     public boolean contains(Object x);
 
+    public boolean removeFirstOccurrence(Object o);
+
+    public boolean removeLastOccurrence(Object o);
+
 }

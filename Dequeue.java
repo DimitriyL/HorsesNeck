@@ -243,6 +243,40 @@ public class Dequeue<T> implements Deque<T>{
     }
     //O(n)
 
+    public boolean removeFirstOccurrence(Object o){
+	DLLNode<T> temp = _front;
+	while (temp != null){
+	    if (temp.getCargo().equals(o) && temp.getNext().equals(null)){
+		temp.getPrev().setNext(null);
+		return true;
+	    }
+	    if (temp.getCargo().equals(o)){
+		temp.getPrev().setNext(temp.getNext());
+		return true;
+	    }
+	    temp = temp.getNext();
+	}
+	return false;
+    }					 
+    //O(n)
+
+    public boolean removeLastOccurrence(Object o){
+	DLLNode<T> temp = _end;
+	while (temp != null){
+	    if (temp.getCargo().equals(o) && temp.getPrev().equals(null)){
+		temp.getNext().setPrev(null);
+		return true;
+	    }
+	    if (temp.getCargo().equals(o)){
+		temp.getNext().setPrev(temp.getPrev());
+		return true;
+	    }
+	    temp = temp.getPrev();
+	}
+	return false;
+    }					 
+    //O(n)
+
     /*
       public String toString()
       overriden toString() method for the Dequeue
