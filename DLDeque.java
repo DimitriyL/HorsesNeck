@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 //Dequeue is the implementation of Deque
-public class Dequeue<T> implements Deque<T>{
+public class DLDeque<T> implements Deque<T>{
 
     //_front and _end are "tracking" nodes, connecting to the first and last
     //nodes of the list
@@ -20,14 +20,14 @@ public class Dequeue<T> implements Deque<T>{
     private int _capacity;
 
     /*
-      public Dequeue()
+      public DLDeque()
       default constructor for class Dequeue<T>
       preconds: attributes are not initialized
       postconds: _front and _end set to null; _size set to 0
                  _capacity set to 10 to indicate an empty Dequeue, with nice
 		 values
      */
-    public Dequeue(){
+    public DLDeque(){
 	_front = null;
 	_end = null;
 	_size = 0;
@@ -36,14 +36,14 @@ public class Dequeue<T> implements Deque<T>{
     }
 
     /*
-      public Dequeue(int capacity)
+      public DLDeque(int capacity)
       overloaded constructor for class Dequeue<T>
       preconds: attributes _front, _end, _size, _capacity not set
       postconds: _front and _end set to null automatically; _size to 0
                  _capacity is set as indicated by the capacity attribute
 		 indicates an empty Dequeue
      */
-    public Dequeue(int capacity){
+    public DLDeque(int capacity){
         _front = null;
 	_end = null;
 	_size = 0;
@@ -387,7 +387,7 @@ public class Dequeue<T> implements Deque<T>{
     public static void main(String[] args){
 
 	//tests offer() and poll()
-	Dequeue<String> test = new Dequeue<String>(5);
+	DLDeque<String> test = new DLDeque<String>(5);
 	System.out.println("Upon initialization: size = " + test.size());
 
 	System.out.println("\nTesting offer()...");
@@ -425,7 +425,7 @@ public class Dequeue<T> implements Deque<T>{
 	System.out.println("\nEnd of test 1\n");
 
 	//tests offerFirst() and pollLast()
-	Dequeue<String> test2 = new Dequeue<String>(5);
+	DLDeque<String> test2 = new DLDeque<String>(5);
 	System.out.println("Upon initialization: size = " + test2.size());
 
 	System.out.println("\nTesting offerFirst()...");

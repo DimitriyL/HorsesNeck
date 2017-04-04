@@ -17,8 +17,14 @@ Queue and Deque Lab-Manahal Tabassum, Dimitriy Leksanov and Michael Ruvinshteyn
 
 ##### Note: The methods poll() and peek() only work in reference to the first element, and the method offer() only works in reference to the last. This is by convention. Thus, pollLast(), peekLast(), and offerFirst() exist to account for both ends of the queue.
 
+### removeFirstOccurrence() and removeLastOccurrence()
+##### As we had previously mentioned, the value in contains() is not in its own functionality as a method, but, rather, in the functionality it provides. remove(First/Last)Occurrence() is very valuable to have, as it allows specific value elements to be removed, but also allows elements of a certain value to be counted, if it is done repeatedly. If we go on to write a reverse method, this could be used for a plethora of tasks, such as keeping an index with all of the String values. However, none of this is possible unless contains() is involved. Though contains() is not used directly, the same functionality that was used to find an element can now be employed to remove it. Also, the two can be combined to create a "remove-all" algorithm.
+
+### Iterator
+##### This is another method that could be valuable in the future. By actually bringing in the iterator class, this is extra functionality that could make DLList traversal a little bit easier.
+
 ### toString()
-#### This method is meant to be a full representation of the queue. Going from front to back, and under assumption that the cargo is of type String, the cargo is appended to an empty String to be returned, which is to represent all of the deque's elements in a row.
+#### This method is meant to be a full representation of the queue. Going from front to back, and under assumption that the cargo is of type String, the cargo is appended to an empty String to be returned, which is to represent all of the deque's elements in a row. It requires a constructor to set up the iterator itself, but should work as it was used in prior homeworks.
 
 ## Our rationale for using DLLNodes:
 #### We were going to use ArrayList initially, but DLLNodes seemed more efficient in terms of runtime. With an ArrayList, for appending and removing, depending on which side we chose as the front, there would be one direction that would require elements to "slide" over to be either added or removed, resulting in linear runtime. However, with DLLNodes, adding and removing is simply a matter of moving _front and _end nodes, and updating _size, which are of constant runtime, making the process a whole lot more efficient, as it does not require traversal.
