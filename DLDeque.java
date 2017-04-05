@@ -244,8 +244,14 @@ public class DLDeque<T> implements Deque<T>{
     //O(n)
 
     public boolean removeFirstOccurrence(Object o){
+	if (isEmpty())
+	    return false;
 	DLLNode<T> temp = _front;
 	while (temp != null){
+	    if (temp.getCargo().equals(o) && temp.getPrev().equals(null)){
+		temp.getNext().setPrev(null);
+		return true;
+	    }
 	    if (temp.getCargo().equals(o) && temp.getNext().equals(null)){
 		temp.getPrev().setNext(null);
 		return true;
@@ -261,8 +267,14 @@ public class DLDeque<T> implements Deque<T>{
     //O(n)
 
     public boolean removeLastOccurrence(Object o){
+	if(isEmpty())
+	    return false;
 	DLLNode<T> temp = _end;
 	while (temp != null){
+	    if (temp.getCargo().equals(o) && temp.getNext().equals(null)){
+		temp.getPrev().setNext(null);
+		return true;
+	    }
 	    if (temp.getCargo().equals(o) && temp.getPrev().equals(null)){
 		temp.getNext().setPrev(null);
 		return true;
