@@ -1,3 +1,8 @@
+//Michael Ruvinshteyn [Horse's Neck]
+//APCS2 pd 1
+//HW 29 -- Stress is the Best
+//2017 - 4 - 4
+
 /*
   DequeDriver: tests methods implemented from interface Deque
 
@@ -6,7 +11,7 @@
   Instructions: M-shift-5 -> DLDeque -> <whatever you named your implementation of Deque>
 */
 
-public class DequeDriver{
+public class DequeTester{
 
     public static void main(String[] args){
 
@@ -82,6 +87,33 @@ public class DequeDriver{
 	System.out.println(test2.pollLast());
 	System.out.println(test2.pollLast());
 	System.out.println(test2.pollLast() + "-past capacity");
+
+	//tests removeFirstOccurrence() and removeLastOccurrence()
+	DLDeque<String> test3 = new DLDeque<String>(5);
+	System.out.println("Upon initialization: size = " + test3.size());
+
+	System.out.println("\nNow adding elements...");
+	//adds some elements (3 of them are repeating to test methods mentioned above)
+	test3.offer("hello");
+	test3.offer("howdy");
+	test3.offer("hi");
+	test3.offer("hello");
+	test3.offer("hello");
+
+	System.out.println("\nCurrent state of test3...");
+	System.out.println(test3);
+
+	System.out.println("\nNow testing removeFirstOccurrence()..."); 
+	System.out.println(test3.removeFirstOccurrence("hello")); //should remove first occurrence of "hello" (in this case at position 0)
+
+	System.out.println("\nCurrent state of test3...");
+	System.out.println(test3);
+
+	System.out.println("\nNow testing removeLastOccurrence()..."); 
+	System.out.println(test3.removeLastOccurrence("hello")); //should remove last occurrence of "hello" (in this case at position 3)
+
+	System.out.println("\nCurrent state of test3...");
+	System.out.println(test3);
     }
 
 }
