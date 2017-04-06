@@ -183,6 +183,8 @@ public class DLDeque<T> implements Deque<T>{
      */
     public boolean offer(T x){
 	//tests for emptiness to avoid the exception
+	if (x.equals(null))
+	    throw new NullPointerException();
 	if (_size == _capacity)
 	    //boolean indicates whether the process has beeen completed
 	    return false;
@@ -205,6 +207,8 @@ public class DLDeque<T> implements Deque<T>{
     //O(1)
 
     public boolean offerFirst(T x){
+	if (x.equals(null))
+	    throw new NullPointerException();
 	//first two parts are identical to offer()
 	if (_size == _capacity)
 	    return false;
@@ -238,7 +242,7 @@ public class DLDeque<T> implements Deque<T>{
                  elements, by use of .equals(), return true; else, return 
 		 false, as the element is not in there
       should be effective if we ever need to implement removeFirstOccurrence()
-      or removeLastOccurrene()
+      or removeLastOccurrence()
      */
     public boolean contains(Object x){
 	DLLNode<T> temp = _front;
@@ -257,6 +261,8 @@ public class DLDeque<T> implements Deque<T>{
     //O(n)
 
     public boolean removeFirstOccurrence(Object o){
+	if (o.equals(null))
+	    throw new NullPointerException();
 	if (isEmpty())
 	    return false;
 	DLLNode<T> temp = _front;
@@ -284,6 +290,8 @@ public class DLDeque<T> implements Deque<T>{
     //O(n)
 
     public boolean removeLastOccurrence(Object o){
+	if (o.equals(null))
+	    throw new NullPointerException();
 	if (isEmpty())
 	    return false;
 	DLLNode<T> temp = _end;

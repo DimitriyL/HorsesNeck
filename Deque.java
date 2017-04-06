@@ -3,6 +3,7 @@
 //Lab 02 -- All Hands on Deque!
 //2017 - 4 - 2
 
+import java.util.Iterator;
 //implementation by Dequeue
 //uses elements relevant for now
 //poll(), peek(), and offer() were chosen to avoid exceptions
@@ -42,5 +43,12 @@ public interface Deque<T>{
     public boolean removeFirstOccurrence(Object o);
 
     public boolean removeLastOccurrence(Object o);
+
+    //returns true if queue is empty
+    //returns false otherwise
+    public boolean isEmpty();
+    
+    //returns iterator of the queue
+    public Iterator<T> iterator();
 
 }
