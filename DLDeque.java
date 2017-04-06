@@ -83,8 +83,13 @@ public class DLDeque<T> implements Deque<T>{
 	if (isEmpty())
 	    return null;
 	//to avoid the exception
-
         T ret = _front.getCargo();
+	if (_size == 1){
+	    _end = null;
+	    _front = null;
+	    _size -= 1;
+	    return ret;
+	}
 	//item to return
 	_front = _front.getNext();
 	_front.setPrev(null);
