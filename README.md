@@ -33,7 +33,7 @@ Queue and Deque Lab-Manahal Tabassum, Dimitriy Leksanov and Michael Ruvinshteyn
 #### Thanks to the driver added by team Chipettes, we have discovered some flaws in our code. After much inquiry, we ended up catching the NullPointerException in order to deal with the ends of the queue for removeFirstOccurrence() and removeLastOccurrence(). This prevented the runtime error of the NullPointerException when dealing with the front and end of the queue. Furthermore, some changes were made to poll() in order to deal with queues of size 1, where we set the front equal to the end, both to null, when removing the only element in the queue.
 
 ### Changes made (2)
-#### isEmpty() and iterator() were added to the Deque interface. The two offer methods and two removeOccurrence methods now throw NullPointerException when offering null.
+#### isEmpty() and iterator() were added to the Deque interface. The two offer methods, contains() method and two removeOccurrence methods now throw NullPointerException when given null.
 
 
 ##### -The HorsesNeck Crew

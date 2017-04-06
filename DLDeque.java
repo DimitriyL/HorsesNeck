@@ -243,8 +243,10 @@ public class DLDeque<T> implements Deque<T>{
 		 false, as the element is not in there
       should be effective if we ever need to implement removeFirstOccurrence()
       or removeLastOccurrence()
-     */
-    public boolean contains(Object x){
+    */
+    public boolean contains(Object x){	
+	if (x.equals(null))
+	    throw new NullPointerException();
 	DLLNode<T> temp = _front;
 	//"ghost" node to traverse the list
 	//when null, you have reached the end
