@@ -261,16 +261,20 @@ public class DLDeque<T> implements Deque<T>{
 	    return false;
 	DLLNode<T> temp = _front;
 	while (temp != null){
-	    if (temp.getCargo().equals(o) && temp.getPrev().equals(null)){
-		temp.getNext().setPrev(null);
-		return true;
-	    }
-	    if (temp.getCargo().equals(o) && temp.getNext().equals(null)){
-		temp.getPrev().setNext(null);
-		return true;
-	    }
-	    if (temp.getCargo().equals(o)){
-		temp.getPrev().setNext(temp.getNext());
+	    if(temp.getCargo().equals(o)){
+		try{
+		    temp.getPrev().setNext(temp.getNext());
+		}
+		catch(java.lang.NullPointerException E){
+		    if(temp.equals(_front)){
+			temp.getNext().setPrev(null);
+			_front = temp.getNext();
+		    }
+		    else{
+			temp.getPrev().setNext(null);
+		    }
+		}
+		_size -= 1;
 		return true;
 	    }
 	    temp = temp.getNext();
@@ -280,26 +284,30 @@ public class DLDeque<T> implements Deque<T>{
     //O(n)
 
     public boolean removeLastOccurrence(Object o){
-	if(isEmpty())
+	if (isEmpty())
 	    return false;
 	DLLNode<T> temp = _end;
 	while (temp != null){
-	    if (temp.getCargo().equals(o) && temp.getNext().equals(null)){
-		temp.getPrev().setNext(null);
-		return true;
-	    }
-	    if (temp.getCargo().equals(o) && temp.getPrev().equals(null)){
-		temp.getNext().setPrev(null);
-		return true;
-	    }
-	    if (temp.getCargo().equals(o)){
-		temp.getNext().setPrev(temp.getPrev());
+	    if(temp.getCargo().equals(o)){
+		try{
+		    temp.getNext().setPrev(temp.getPrev());
+		}
+		catch(java.lang.NullPointerException E){
+		    if(temp.equals(_end)){
+			temp.getPrev().setNext(null);
+			_end = temp.getPrev();
+		    }
+		    else{
+			temp.getNext().setPrev(null);
+		    }
+		}
+		_size -= 1;
 		return true;
 	    }
 	    temp = temp.getPrev();
 	}
 	return false;
-    }					 
+    }
     //O(n)
 
     /*
