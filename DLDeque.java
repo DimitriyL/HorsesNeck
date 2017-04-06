@@ -87,6 +87,7 @@ public class DLDeque<T> implements Deque<T>{
         T ret = _front.getCargo();
 	//item to return
 	_front = _front.getNext();
+	_front.setPrev(null);
 	//passes over the first element
 	_size -= 1;
 	return ret;
@@ -98,8 +99,15 @@ public class DLDeque<T> implements Deque<T>{
 	    return null;
 
 	T ret = _end.getCargo();
+	if (_size == 1){
+	    _end = null;
+	    _front = null;
+	    _size -= 1;
+	    return ret;
+	}
 	//gets last element
 	_end = _end.getPrev();
+	_end.setNext(null);
 	//skips over the last element to ignore it
 	_size -= 1;
 	return ret;
