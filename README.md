@@ -29,4 +29,7 @@ Queue and Deque Lab-Manahal Tabassum, Dimitriy Leksanov and Michael Ruvinshteyn
 ## Our rationale for using DLLNodes:
 #### We were going to use ArrayList initially, but DLLNodes seemed more efficient in terms of runtime. With an ArrayList, for appending and removing, depending on which side we chose as the front, there would be one direction that would require elements to "slide" over to be either added or removed, resulting in linear runtime. However, with DLLNodes, adding and removing is simply a matter of moving _front and _end nodes, and updating _size, which are of constant runtime, making the process a whole lot more efficient, as it does not require traversal.
 
+### Changes made
+#### Thanks to the driver added by team Chipettes, we have discovered some flaws in our code. After much inquiry, we ended up catching the NullPointerException in order to deal with the ends of the queue for removeFirstOccurrence() and removeLastOccurrence(). This prevented the runtime error of the NullPointerException when dealing with the front and end of the queue. Furthermore, some changes were made to poll() in order to deal with queues of size 1, where we set the front equal to the end, both to null, when removing the only element in the queue.
+
 ##### -The HorsesNeck Crew
